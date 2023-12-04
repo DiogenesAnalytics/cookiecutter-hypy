@@ -38,6 +38,7 @@ This project was generated from [@cjolowicz]'s [Hypermodern Python Cookiecutter]
 
 {% if cookiecutter.license != 'Proprietary' -%}
 <!-- github-only -->
+
 [license]: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/blob/main/LICENSE
 {%- else -%}
 <!-- github-only -->
