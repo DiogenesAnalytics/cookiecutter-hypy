@@ -1,10 +1,13 @@
-[tool.poetry]
+[project]
 name = "{{cookiecutter.project_name}}"
 version = "{{cookiecutter.version}}"
 description = "{{cookiecutter.description}}"
-authors = ["{{cookiecutter.author}} <{{cookiecutter.email}}>"]
+authors = [
+  { name = "{{cookiecutter.author}}", email = "{{cookiecutter.email}}" }
+]
 license = "{{cookiecutter.license}}"
 readme = "README.md"
+requires-python = ">=3.9,<3.13"
 homepage = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}"
 repository = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}"
 {% if cookiecutter.package_name != cookiecutter.project_name.replace('-', '_') -%}
@@ -16,12 +19,8 @@ classifiers = [
     "{{cookiecutter.development_status}}",
 ]
 
-[tool.poetry.urls]
+[project.urls]
 Changelog = "https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/releases"
-
-[tool.poetry.dependencies]
-python = "^3.9"
-click = ">=8.0.1"
 
 [tool.poetry.group.dev]
 optional = true
@@ -31,6 +30,7 @@ Pygments = ">=2.10.0"
 black = ">=21.10b0"
 coverage = {extras = ["toml"], version = ">=6.2"}
 darglint = ">=1.8.1"
+deptry = "^0.23.0"
 flake8 = ">=4.0.1"
 flake8-bugbear = ">=21.9.2"
 flake8-docstrings = ">=1.6.0"
@@ -48,9 +48,6 @@ pyupgrade = ">=2.29.1"
 typeguard = ">=2.13.3"
 xdoctest = {extras = ["colors"], version = ">=0.15.10"}
 myst-parser = {version = ">=0.16.1"}
-
-[tool.poetry.scripts]
-{{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.__main__:main"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -77,5 +74,5 @@ show_column_numbers = true
 show_error_context = true
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=2.0"]
 build-backend = "poetry.core.masonry.api"
