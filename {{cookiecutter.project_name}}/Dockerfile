@@ -1,5 +1,5 @@
 # jupyter base image
-FROM ghcr.io/jupyter/scipy-notebook:master AS jupyter
+FROM ghcr.io/diogenesanalytics/scipy-notebook:master AS jupyter
 
 # first turn off git safe.directory
 RUN git config --global safe.directory '*'
