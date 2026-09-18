@@ -1,5 +1,6 @@
 """Tests for the Cookiecutter template."""
 
+import py_compile
 from pathlib import Path
 from typing import List
 
@@ -144,3 +145,55 @@ def test_no_unrendered_cookiecutter_variables(
             continue
 
         assert "{{ cookiecutter." not in contents, path
+
+
+def test_generated_pyproject(
+    default_baked_project: Result,
+) -> None:
+    """Verify generated pyproject.toml contains expected metadata.
+
+    Args:
+        default_baked_project: The generated project.
+
+    """
+    pyproject_path = default_baked_project.project_path / "pyproject.toml"
+
+    contents = pyproject_path.read_text()
+
+    assert 'name = "hypermodern-python"' in contents
+    assert 'version = "0.0.0"' in contents
+    assert 'description = "A Diogenes Analytics Python project."' in contents
+    assert 'requires-python = ">=3.9,<3.13"' in contents
+    assert 'name = "Diogenes Analytics"' in contents
+
+
+def test_generated_readme(
+    default_baked_project: Result,
+) -> None:
+    """Verify generated README contains expected project metadata.
+
+    Args:
+        default_baked_project: The generated project.
+
+    """
+    readme_path = default_baked_project.project_path / "README.md"
+
+    contents = readme_path.read_text()
+
+    assert "hypermodern-python" in contents
+    assert "A Diogenes Analytics Python project." in contents
+
+
+def test_generated_python(
+    default_baked_project: Result,
+) -> None:
+    """Verify generated Python files compile successfully.
+
+    Args:
+        default_baked_project: The generated project.
+
+    """
+    project_path = default_baked_project.project_path
+
+    for path in project_path.rglob("*.py"):
+        py_compile.compile(path, doraise=True)
