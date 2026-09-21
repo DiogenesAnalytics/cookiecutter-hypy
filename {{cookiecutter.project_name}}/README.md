@@ -1,11 +1,9 @@
 [![tests](https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/workflows/tests/badge.svg)][tests]
 [![Docker](https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/workflows/docker/badge.svg)][docker]
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)][pre-commit]
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
 
 [tests]: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/actions?workflow=tests
 [docker]: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/actions?workflow=docker
-[pre-commit]: https://github.com/pre-commit/pre-commit
 [black]: https://github.com/psf/black
 
 # {{cookiecutter.friendly_name}}
