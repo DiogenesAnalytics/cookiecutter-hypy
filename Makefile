@@ -148,7 +148,7 @@ print-config:
 
 lint: deptry isort black flake8 mypy
 
-tests: pytest lint
+tests: lint pytest
 
 pytest:
 	@echo ""
